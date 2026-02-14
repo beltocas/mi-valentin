@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi Valentín? ❤️</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffeef8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .gif-container {
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #btnSi {
+            background-color: #ff4d6d;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #btnNo {
+            background-color: #adb5bd;
+            color: white;
+            position: relative;
+        }
+
+        .celebration {
+            display: none;
+        }
+
+        .celebration h2 {
+            color: #ff4d6d;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainContent">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG56Znd4ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" alt="Cute Panda" width="200">
+        </div>
+        <h1>¿Quieres ser mi Valentín? ❤️</h1>
+        <div class="buttons">
+            <button id="btnSi">¡SÍ! 😍</button>
+            <button id="btnNo">No 💔</button>
+        </div>
+    </div>
+
+    <div id="celebration" class="celebration">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZleHh4Z3R4Z3R4Z3R4Z3R4Z3R4Z3R4Z3R4Z3R4Z3R4Z3R4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l41lH4ADRtAYnGsLe/giphy.gif" alt="Happy" width="300">
+        <h2>¡SABÍA QUE DIRÍAS QUE SÍ! 💖✨</h2>
+        <p>¡Te amo muchísimo!</p>
+    </div>
+
+    <script>
+        const btnSi = document.getElementById('btnSi');
+        const btnNo = document.getElementById('btnNo');
+        const mainContent = document.getElementById('mainContent');
+        const celebration = document.getElementById('celebration');
+
+        let siFontSize = 1.2; // Tamaño inicial en rem
+
+        btnNo.addEventListener('mouseover', () => {
+            // Cada vez que intente tocar "No", el "Si" crece
+            siFontSize += 0.5;
+            btnSi.style.fontSize = siFontSize + 'rem';
+            btnSi.style.padding = (siFontSize * 10) + 'px ' + (siFontSize * 20) + 'px';
+            
+            // Mover el botón "No" aleatoriamente para que no pueda darle clic
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        });
+
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Buen intento, pero no puedes decir que no 😉");
+        });
+
+        btnSi.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            celebration.style.display = 'block';
+            document.body.style.backgroundColor = '#ffc8dd';
+        });
+    </script>
+</body>
+</html>
